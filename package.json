@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/open-sans": "^0.2.3",
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
     "@reduxjs/toolkit": "^2.0.1",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "^18.2.42",
+    "eslint-config-teacode": "^2.1.0",
     "typescript": "^5.3.3"
   },
   "private": true

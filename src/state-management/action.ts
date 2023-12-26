@@ -1,10 +1,10 @@
-
-export const setUser = (user) => ({
-    type: "SET_USER",
-    payload: user,
+import { User } from "@firebase/auth-types";
+export const setUser = (user: User) => ({
+  type: "SET_USER",
+  payload: user,
 });
 
-export const setLoading = (isLoading) => ({
-    type: "SET_LOADING",
-    payload: isLoading,
+export const setLoading = (isLoading: boolean) => ({
+  type: "SET_LOADING",
+  payload: isLoading,
 });

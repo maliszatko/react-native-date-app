@@ -1,10 +1,13 @@
-import {LogBox} from 'react-native';
-import { getApp, initializeApp } from 'firebase/app';
-import firebaseConfig from './src/firebase/firebaseConfig';
+import { LogBox } from "react-native";
+import { getApp, initializeApp } from "firebase/app";
+import firebaseConfig from "./src/firebase/firebaseConfig";
 import Home from "./src/navigation/navigation";
 import { Provider } from "react-redux";
 import store from "./src/state-management/store";
-import LoadingScreen from './src/screens/LoadingScreen';
+import LoadingScreen from "./src/screens/LoadingScreen";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   useFonts,
   OpenSans_300Light,
@@ -19,7 +22,7 @@ import {
   OpenSans_600SemiBold_Italic,
   OpenSans_700Bold_Italic,
   OpenSans_800ExtraBold_Italic,
-} from '@expo-google-fonts/open-sans';
+} from "@expo-google-fonts/open-sans";
 
 try {
   initializeApp(firebaseConfig);
@@ -31,17 +34,18 @@ try {
   }
 }
 
-const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
+// const auth = initializeAuth(app, {
+//   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+// });
 
 // LogBox.ignoreAllLogs(true)
 // LogBox.ignoreLogs([
 //   "expo-app-loading is deprecated in favor of expo-splash-screen"
 // ]);
 
-
 export default function App() {
-
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     OpenSans_300Light,
     OpenSans_400Regular,
     OpenSans_500Medium,
@@ -56,17 +60,14 @@ export default function App() {
     OpenSans_800ExtraBold_Italic,
   });
 
-
   if (!fontsLoaded) {
     return <LoadingScreen />;
   } else {
-
     // please check developer mode in navigation.js before continuing.
     return (
-        <Provider store={store}>
-          <Home />
-        </Provider>
+      <Provider store={store}>
+        <Home />
+      </Provider>
     );
   }
-
 }

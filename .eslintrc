@@ -1,0 +1,9 @@
+{
+  "extends": ["eslint-config-teacode"],
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "ignorePatterns": ["types.generated.ts"]
+}
