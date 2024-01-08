@@ -1,12 +1,12 @@
-import { LogBox } from "react-native";
 import { getApp, initializeApp } from "firebase/app";
 import firebaseConfig from "./src/firebase/firebaseConfig";
 import Home from "./src/navigation/navigation";
 import { Provider } from "react-redux";
 import store from "./src/state-management/store";
 import LoadingScreen from "./src/screens/LoadingScreen";
-import { initializeAuth, getReactNativePersistence } from "firebase/auth";
-import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import * as eva from "@eva-design/eva";
+import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
 
 import {
   useFonts,
@@ -34,7 +34,7 @@ try {
   }
 }
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 // const auth = initializeAuth(app, {
 //   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
 // });
@@ -66,7 +66,10 @@ export default function App() {
     // please check developer mode in navigation.js before continuing.
     return (
       <Provider store={store}>
-        <Home />
+        <IconRegistry icons={EvaIconsPack} />
+        <ApplicationProvider {...eva} theme={eva.light}>
+          <Home />
+        </ApplicationProvider>
       </Provider>
     );
   }

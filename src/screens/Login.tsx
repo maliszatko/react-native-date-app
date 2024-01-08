@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { View, TextInput, Button, StyleSheet, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import {
   auth,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
 } from "../firebase/firebase-utilities";
 import { setLoading, setUser } from "../state-management/reducers";
 import StyledButton from "../components/StyledButton";
@@ -15,7 +13,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   const handleSignIn = () => {
     // Dispatch setLoading action with true to show the loading screen

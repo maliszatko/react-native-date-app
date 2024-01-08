@@ -1,13 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { useAppSelector } from "../hooks";
 
 const HomeScreen = () => {
+  const user = useAppSelector((state) => state.user);
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>OpenMind Users </Text>
+    <>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>
+            Welcome back {user.displayName}!
+          </Text>
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -15,7 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: "10%",
+    // paddingTop: "10%",
   },
   header: {
     height: 60,
